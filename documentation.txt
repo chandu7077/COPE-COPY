@@ -1,0 +1,36 @@
+Overview
+The process of copying the files or folders from different locations into one particular location at a time is tedious when there is a need for copying many files from many folders.This project makes this task plain and easy by accessing the clipboard contents through shell script and using the linux commands to copy the files.
+Goals
+
+The main goal of this project is minimizing the tiredness involved in copying the files at different locations each and every time and pasting into the target folder.
+
+
+The goal is to run the shell script in the terminal and proceeding normally by copying the files either through pressing (CTRL +C) or using Graphical User Interface (GUI) and the executing script will copy the files/folders.
+
+
+Ultimately, there is an option to compress the target folder which can be further used for mailing all the copied files easily.
+
+Specifications
+
+The project is written in shell script (GNU bash version 4.4.23).
+
+
+The shell script is run on Kali GNU/Linux Rolling operating system.
+
+
+The shell script is run on linux kernel (Linux 4.12.0-kali1-amd64).
+
+
+Basic linux commands were used in the code.
+
+
+Linux packages like xclip,xsel etc were used to make tasks efficient.
+
+Working of shell script(program):
+      The program initially clears the clipboard using the xsel command [1].The program then asks to enter the target directory path [7].If the path entered doesn’t exist then by default it creates the target folder with given path [10].The program asks whether to compress the target folder after copying all files into that [12].
+
+     Then the program enters the while loop and and check for the content in the clipboard.Whenever we press (CTRL+C)  on the file/folder to copy it then it stores the files path into the clipboard and the program access that clipboard via xclip package and commands in it [25].Then it checks whether if file is present in the target path given or not.If it is already present then it skips copying otherwise it copies the file into the folder [27-32].Then the clipboard contents are cleared so that we can copy other file and sleeps for one second so as to complete the task and returns to while loop [28-29].
+
+    The while loop ends when we press (CTRL+C) in the terminal and (CTRL+C ) is handled by trap command to check for whether to compress the folder [22].So it returns to function and based on the user requirement the function either compresses or leave the folder in the path [14-21].
+
+ Note:[i] refers to the line number in the code.
